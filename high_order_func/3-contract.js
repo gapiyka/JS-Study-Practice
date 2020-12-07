@@ -18,5 +18,5 @@ console.log(res); // Output: 5
 //second test by strings
 const concat = (s1, s2) => s1 + s2;
 const concatStrings = contract(concat, String, String, String);
-const res = concatStrings('Hello ', 'world!');
-console.dir(res); // Output: Hello world!
+const res2 = concatStrings("Hello ", "world!");
+console.dir(res2); // Output: Hello world!
