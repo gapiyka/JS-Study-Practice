@@ -324,12 +324,25 @@ const task12 = function (){
 }
 task12();
 
-//13-Task: (80) Модуль: Есть строка с имейлами и другой информацией.(Для упрощения вся инфа разделенна символом: ";"). Написать две функции и потом их скомпозировать! 1-ая функция: берет со строки только имейлы и помещаит их в массив. 2-ая функция: Каждый имейл разбиваеться на две части(имя и домен) и помещаеться в еще два разных массива.
+//13-Task: (80) Модуль: Есть строка с имейлами и другой информацией. Написать две функции и потом их скомпозировать! 1-ая функция: берет со строки только имейлы и помещаит их в массив. 2-ая функция: Каждый имейл разбиваеться на две части(имя и домен) и помещаеться в еще два разных массива.
 //Solution: 
 const task13 = function (){
     console.log("Task13:");
+    let string = "Marcus Aurelius +302104210009 mark2002@gmail.com 121, Abraham Lincoln +380937446327 ibra@gmail.com 1809, Nelson Mandela +380682132258 freecode@mail.ru 1918, John F. Kennedy +380977132481 doublekill@mail.ru 1917, Winston Churchill +38067721942 father.228@ukr.net 1874";
+    function first(str){
+        return str.split(" ").filter(word => word.includes("@"));
+    }
+    function second(arr){
+        let namesArray = [], domenArray = [];
+        arr.map(mail => {
+            namesArray.push(mail.slice(0, mail.indexOf("@")));
+            domenArray.push(mail.slice(mail.indexOf("@")));
+        });
+        return {namesArray, domenArray};
+    }
+    const compose = (f1, f2) => x => f2(f1(x));
 
-
+    console.log(compose(first, second)(string));
     console.log("\n");
 }
 task13();
@@ -339,17 +352,56 @@ task13();
 const task14 = function (){
     console.log("Task14:"); 
 
+    let myMap = new Map();//initialization
+
+    myMap.set("Alpha", 1);//adding elements
+    myMap.set("Beta", 2);
+    myMap.set("Gamma", 3);
+
+    console.log("Map size:" + myMap.size);//size of map
+
+    let MapIteratorV = myMap.values();//return value iterator(kinda for / map())
+    console.log(MapIteratorV.next().value);
+    console.log(MapIteratorV.next().value);
+    console.log(MapIteratorV.next().value);
+
+    let MapIteratorK = myMap.keys();//return keys iterator(kinda for / map())
+    console.log(MapIteratorK.next().value);
+    console.log(MapIteratorK.next().value);
+    console.log(MapIteratorK.next().value);
+    
+    let MapIteratorE = myMap.entries();//return iterator but with pair[key, value]
+    console.log(MapIteratorE.next().value);
+    console.log(MapIteratorE.next().value);
+    console.log(MapIteratorE.next().value);
+
+    console.log(myMap.has("Alpha"));//returns a boolean indicating whether an element with the specified key exists or not.
+    console.log(myMap.has(1));
+
+    console.log(myMap.get("Alpha"));//returns an element for this key
+    console.log(myMap.get(1));//output undefined
+
+    myMap.delete("Beta");//delete element from map
+
+    function logMapCallback(value, key, map) {
+        console.log("map[" + key + "] = " + value);
+    }
+    myMap.forEach(logMapCallback);//call callback for each element in map
+
+    myMap.clear();//make map empty but not delete it completely
 
     console.log("\n");
 }
 task14();
 
-//15-Task: (??) Реверс массива. Note: В одну строку(или не более 20 символов) + без использования .reverse
+//15-Task: (??) Реверс массива. Note: В одну строку + без использования .reverse
 //Solution: 
 const task15 = function (){
     console.log("Task15:");
 
-
-    console.log("\n");
+    let a=[1,2,3];
+    //return a.map((x,i) => a[a.length-1-i]);//method1 stackoverflow
+    //return a.map(a.pop,[...a]);//method2 stackoverflow
+    return a.sort(a=>-a);//method3 rly-solo))), just exchange 2 symbols from stackoverflow (a.sort(a=>1))
 }
-task15();
+console.log(task15());
