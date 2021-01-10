@@ -142,7 +142,12 @@ const task5 = function (){
         }
         return "YES";
     }
+    function isPalindrom2(word){// code spizzen from Nico-nico-lay)
+        return word.toLowerCase().split("").reverse().join("") === word.toLowerCase();
+    }
+
     console.log(`Is word "${palindrom}" palindrom? Answer: ${isPalindrom(palindrom)}`);
+    console.log(`Is word "${palindrom}" palindrom? Answer: ${isPalindrom2(palindrom)}`);
 
     console.log("\n");
 }
@@ -275,6 +280,7 @@ const task10 = function (){
     console.log(obj);
     console.log(obj.map(callback));
     console.log(obj);
+
     console.log("\n");
 }
 task10();
