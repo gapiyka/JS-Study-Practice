@@ -281,7 +281,12 @@ const task10 = function (){
     console.log(obj.map(callback));
     console.log(obj);//test on changing proto
 
-    Object.prototype.map = function(fn){// code spizzen from Makov-Vik //mb its more correct solution
+    let obj2 = {
+        name: "Ignat2",
+        age:96,
+        hobby: "Wind Surfing"
+    }
+    Object.prototype.map2 = function(fn){// code spizzen from Makov-Vik //mb its more correct solution
         let myobj = this;
         let result = {};
         
@@ -291,8 +296,8 @@ const task10 = function (){
         return result;
       }
       
-      console.log(obj.map(callback));
-      console.log(obj);//test on changing proto
+      console.log(obj2.map2(callback));
+      console.log(obj2);//test on changing proto
 
     console.log("\n");
 }
