@@ -279,7 +279,20 @@ const task10 = function (){
     };
     console.log(obj);
     console.log(obj.map(callback));
-    console.log(obj);
+    console.log(obj);//test on changing proto
+
+    Object.prototype.map = function(fn){// code spizzen from Makov-Vik //mb its more correct solution
+        let myobj = this;
+        let result = {};
+        
+        for( let i of Object.keys(myobj)){
+          result[i] = (fn(this[i]));
+        }
+        return result;
+      }
+      
+      console.log(obj.map(callback));
+      console.log(obj);//test on changing proto
 
     console.log("\n");
 }
@@ -400,7 +413,7 @@ const task14 = function (){
 }
 task14();
 
-//15-Task: (??) Реверс массива. Note: В одну строку + без использования .reverse
+//15-Task: (??) Реверс массива как можно короче. Note: Без создания нового массива(на месте) + без использования .reverse
 //Solution: 
 const task15 = function (){
     console.log("Task15:");
